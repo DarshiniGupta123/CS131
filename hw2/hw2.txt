@@ -1,0 +1,52 @@
+In discussion, the TA explained how make parser is very similar to the
+matcher function, with only a few changes. The parser has to be able to
+match the whole thing, otherwise it should return None. Also the parser
+does not take an acceptor as an input. Unlike matcher, the parse should
+return a tree not a suffix. Using matcher as my basic logic, I tried to
+implement parse tree by changing these components in my matcher function;
+however, I was not able to get my function to compile due to some logical
+error and I could not figure it out. I thunk the idea of make parser was
+to build a parse tree by looking at the rules from a nonterminal value
+and building subtrees from the additional nonterminal values. I wrote a
+test case for the parser even though I did not implement it in my code
+because I understood that the parser should return Some tree with the
+entire fragment matched, and None if even a part of the fragment was not
+able to matched. If my parser was correct then the test case I written
+should return the entire tree fragment. 
+
+I was able to complete the make_matcher function largely due to the logic
+and code the TA provided in the slides. I matched my implementation and
+functionality to the make_or_matcher function. The first recursion call
+in my helper function is almost the same exact as the make_or_matcher
+function. This function pattern matches the alternative list, which I pass
+into my function, and if its empty, then it returns nothing. Otherwise
+I call the second recursive function with the first value from the
+rule list and if this returned value is None, then I recursively call the
+first function with the rest of the list, otherwise I add this symbol and
+consider it to be matched. For my second recursive function, I based my
+logic off the make_appended_matchers and the match_nucleotide functions in
+the slides. I check if the rule is empty, and if so, I return accept frag,
+which is my base case. Otherwise, I match the head with either nonterminal
+or terminal. If the head is nonterminal, meaning there is another list I
+have to go through, I recursively call the first recursive function with
+the new rule list for this symbol and a new accept as well. If the head
+matches with a terminal value, that means there is not another list I have
+to go through and I just have to match the frag with some value from this
+list. If there is not match, then I return None since this symbol is not
+allowed. If the first value from frag matches the terminal value then I
+recursively call the second function again with the rest of the fragment
+list. There are a few differences from my code and the sample code. Unlike
+the code provided, I pass in accept and frag as arguments. The spec
+and the code provided use currying for these two arguments. This is also
+why my matcher function does not return a function because I just have
+extra arguments. There are grammars that my make matcher probably would
+not work for since in discussion we talked about how our functionality
+only has to account for context-free grammar. With other types of grammar,
+there is the possibility of infinite recursion. There were times while
+writing the second recursion call that the program would go into an
+infinite loop because of how I was setting my variables outside of the
+pattern matching, calling the function even when I should not. I also
+encountered a logic error when I was calling the first function when my
+head was a nonterminal value because of the accept, and I realized I have
+to change the accept for the new rule. 
+

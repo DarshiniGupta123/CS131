@@ -1,0 +1,31 @@
+Question 1 involved writing a function that checks if the first set is a subset of the second list. For my implementation,
+I look at the head of the first set and check if this element is in the second list. I so, I recursively call the function
+with the first set minus the first element and the second set as is. If the element is not in the second set, I return false.
+My base case is if the first list is an empty list, I return true.
+
+Question 2 involved writing a function that checks whether the two lists that are the paramters are equal to each other. In
+order to implement this function, I used the subset function I wrote in the previous question which was a hint in the TA github
+page. I checked if a is a subset of b and b is a subset of a, which would mean that both sets have all the values of the
+other set in it meaning that they are equal.
+
+Question 3 involved writing a function that combines the two sets into a combined set called set_union. This function
+did not involve much computation, and I simply used the @ operation to combine both the list parameters into one list. This
+implementation though, may not account for duplicates in the sets, and the final list may contain duplicates.
+
+Question 4 involved writing a function that returns a list of what the two lists have in common. 
+I first check the head of the first element and see whether it is in the second element. If so, I recursively
+call the function with the head concatenated, otherwise, I recursively call the function with the first set minus
+the first element and the second set as is.
+
+Question 5 involved writing a function that returns a list of what is in the first set and not in the second list
+parameter. My implementation of this is the opposite of how I implemented the function for question 4. I recursively
+call the function with the head concatenated if the element in a a is not in b otherwise I just recursively call the
+the function with the smaller first list.
+
+Question 6 involved writing a function that returns a point in which I pass a x into the target function f and then pass this
+f[x] and x into the function or (predicate) which determines if they are equal. If equal, I return x or the point when they are
+equal, otherwise I recursively call the function with the third parameter being f(x).
+
+Question 7 involved writing a function that removes all the unreachable symbols in some specified grammar. I followed the
+algorithm that was provided in the TA github page. I had to change it a little so that it accounts for the case when the symbol
+passsed in the function is not the top symbol in the rules. My implementation also does not work for blind alley.
