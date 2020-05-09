@@ -19,7 +19,7 @@ import re
 import aiohttp
 import logging
 
-API_KEY = 'AIzaSyBgF5eIOsAbx3MSVicCeszCxuTpB1-HPA4'
+API_KEY = ''
 #rVal = ""
 pattern = "(\+|\-)(\d+)(\.)(\d+)(\-)(\d{3})(\.)(\d+)"
 pattern2 = "(\d+)(\.)(\d+)"
